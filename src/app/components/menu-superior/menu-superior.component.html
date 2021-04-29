@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-dark mb-2" style="background-color: #2b2e4a;">
+  <a class="navbar-brand" href="#">
+    <img id="logoMenuSuperior" src="../assets/img/logo.png" class="mr-2" alt="logito" />
+    {{ titulo }}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Inicio</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Profesores
+        </a>
+        <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['/docente/listar']">Listar</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" [routerLink]="['/docente/crear']">Crear</a>
+          <a class="dropdown-item" [routerLink]="['/docente/admin']">Administar</a>
+        </div>
+
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Universidades
+        </a>
+        <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['/universidad/listar']">Listar</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" [routerLink]="['/universidad/crear']">Crear</a>
+          <a class="dropdown-item" [routerLink]="['/universidad/admin']">Administar</a>
+        </div>
+      <!-- <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          DocenteU
+        </a>
+        <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['/docente/listar']">Listar</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" [routerLink]="['/docente/crear']">Crear</a>
+          <a class="dropdown-item" [routerLink]="['/docente/admin']">Administar</a>
+        </div>
+      </li> -->
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/privado']" routerLinkActive="active">Pública Docente</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/publica-universidad']" routerLinkActive="active">Pública Universidad</a>
+      </li>
+    </ul>
+    <span class="navbar-text"> <a [routerLink]="['/login']">Usuarios Registrados</a> </span>
+  </div>
+</nav>

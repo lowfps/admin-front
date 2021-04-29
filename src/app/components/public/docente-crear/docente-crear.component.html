@@ -1,0 +1,71 @@
+<div class="mt-1">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/home']">Inicio</a></li>
+      <li class="breadcrumb-item">
+        <a  [routerLink]="['/docente/listar']">Docente</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Crear</li>
+    </ol>
+  </nav>
+</div>
+
+<div class="row justify-content-md-center">
+  <div class="col-md-10">
+    <div class="card">
+      <h5 class="card-header bg-dark text-white">
+        Creacion de Docente
+      </h5>
+      <div class="card-body">
+        <form #frmCrear="ngForm" (ngSubmit)="frmCrear.form.valid &&  enviarInfo(frmCrear)" novalidate>
+          <div class="form-group">
+            <label for="nomDocente">Nombre del docente</label>
+            <input type="text" class="form-control" id="nomDocente" name="nomDocente"
+              [(ngModel)]="objDocente.nombreDocente" #nomDocente="ngModel"
+              [ngClass]="{'is-invalid': frmCrear.submitted && nomDocente.invalid}" required minlength="5" />
+            <div class="invalid-feedback" *ngIf="frmCrear.submitted && nomDocente.invalid">
+              <span *ngIf="nomDocente?.errors?.required">Nombre del docente requerido</span>
+              <span *ngIf="nomDocente?.errors?.minlenght">Debe tener mínimo 5 caractéres</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nomDocente">Documento del docente</label>
+            <input type="number" class="form-control" id="docDocente" name="docDocente" [(ngModel)]="objDocente.documento"
+              pattern="[0-9]" #docDocente="ngModel" [ngClass]="{'is-invalid': frmCrear.submitted && docDocente.invalid}"
+              required minlength="5" />
+            <div class="invalid-feedback" *ngIf="frmCrear.submitted && docDocente.invalid">
+              <span *ngIf="docDocente?.errors?.required">Documento del docente requerido</span>
+              <span *ngIf="docDocente?.errors?.minlenght">Debe tener mínimo 5 caractéres</span>
+              <span *ngIf="docDocente?.errors?.patter">Solo admite números</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nomDocente">Foto del docente</label>
+            <div class="input-group">
+              <input type="text" class="form-control form-control-sm" id="fotoDocente" name="fotoDocente"
+                [(ngModel)]="objDocente.nombreFoto" #fotoDocente="ngModel"
+                [ngClass]="{'is-invalid': frmCrear.submitted && fotoDocente.invalid}" required
+                accept="image/x-png, image/jpeg, image/x-jpg, image/gif" />
+              <button type="button" class="btn btn-info btn-sm" (click)="fileInput.click()">
+                <span>+</span>
+                <input #fileInput type="file" (change)=seleccionarFoto($event) style="display: none;" />
+              </button>
+            </div>
+            <div class="invalid-feedback" *ngIf="frmCrear.submitted && fotoDocente.invalid">
+              <span *ngIf="fotoDocente?.errors?.required">Foto requerida</span>
+            </div>
+          </div>
+          <!--Mostrar foto docente:inicio-->
+          <div class="text-left">
+            <img class="img-thumbnail" style="width: 250px; height: 250px;" [src]="objDocente.fotoBase64" alt="Foto"
+              onerror="this.src='../assets/img/no_photo.png' " />
+          </div>
+          <!--Mostrar foto docente:fin-->
+          <button class="btn btn-dark" type="submit">Crear</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

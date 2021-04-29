@@ -1,0 +1,21 @@
+<nav class id="menuLateral">
+    <div class="list-group">
+      <a
+        class="list-group-item list-group-item-action list-group-item-dark"
+        style="padding-top: 4px; padding-bottom: 4px"
+        [routerLink]="['/publica-universidad/detalle', 0]"
+        (click)="inicializar()"
+        >Universidades</a
+      >
+      <small>
+        <a *ngFor="let universidadObj of arrUniversidades; let i = index"
+        [routerLink]="['/publica-universidad/detalle', universidadObj.codigoUniversidad]"
+        class="list-group-item list-group-item-action"
+        style="padding-top: 3px; padding-bottom: 3px;"
+        [class.list-group-item-success]="universidadObj == objUniversidadSeleccionada"
+        (click)="seleccionarProfe(universidadObj)"
+          >{{ i + 1 }}. {{ universidadObj.nombreUniversidad }}</a
+        >
+      </small>
+    </div>
+  </nav>

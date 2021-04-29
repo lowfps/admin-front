@@ -1,0 +1,56 @@
+<div class="mt-1">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a [routerLink]="['/home']">Inicio</a></li>
+        <li class="breadcrumb-item">
+          <a href="javascript:void(0)">Profesores</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Listar</li>
+      </ol>
+    </nav>
+  </div>
+  
+  <div class="row justify-content-md-center">
+    <table class="table table-hover col-md-11">
+      <thead class="bg-dark text-white">
+        <tr>
+          <th scope="col">Codigo</th>
+          <th scope="col">Nombre universidad</th>
+          <th scope="col">Foto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let objUniversidad of arrUniversidades
+        | paginate:{
+          id:'docentePaginacion',
+          itemsPerPage: cantidadMostrar,
+          currentPage: paginaActual,
+          totalItems: cantidadTotalRegistros
+        };
+        let i=index
+        ">
+          <th>{{objUniversidad.codigoUniversidad}}</th>
+          <td>{{objUniversidad.nombreUniversidad}}</td>
+          <td>{{objUniversidad.nombreLogo}}</td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <!--Paginador:inicio-->
+  <div class="row justify-content-md-center">
+    <div class="col-md-4 text-left" style="padding-left: 0px">
+      <small><strong>{{ cantidadTotalRegistros }}</strong> Registros encontrados en
+        <strong>{{ cantidadPaginas }}</strong> paginas</small>
+    </div>
+    <div class="col-md-7 text-right" style="padding-right: 0px">
+      <small>
+        <pagination-controls id="docentePaginacion" (pageChange)="paginaActual=$event" [maxSize]="15"
+          [directionLinks]="true" previousLabel="Anterior" nextLabel="Siguiente">
+        </pagination-controls>
+      </small>
+    </div>
+  </div>
+  <!--Paginador:fin-->
+  
